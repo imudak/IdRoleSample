@@ -50,6 +50,9 @@ namespace IdRoleSample.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+            [Display(Name = "IsAdministrator")]
+            public bool IsAdministrator { get; set; }
         }
 
         public void OnGet(string returnUrl = null)
@@ -66,6 +69,11 @@ namespace IdRoleSample.Areas.Identity.Pages.Account
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
+                    if (Input.IsAdministrator)
+                    {
+                        result = await _userManager.AddToRoleAsync(user, "Administrator");
+                    }
+
                     _logger.LogInformation("User created a new account with password.");
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
