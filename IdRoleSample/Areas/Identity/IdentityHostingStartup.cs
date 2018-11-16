@@ -21,8 +21,9 @@ namespace IdRoleSample.Areas.Identity
                 //options.UseSqlServer(
                 //    context.Configuration.GetConnectionString("IdRoleSampleContextConnection")));
 
-                services.AddDefaultIdentity<IdentityUser>()
-                    .AddEntityFrameworkStores<IdRoleSampleContext>();
+                services.AddIdentity<IdentityUser, IdentityRole>()
+                    .AddEntityFrameworkStores<IdRoleSampleContext>()
+                    .AddDefaultUI();
             });
         }
     }

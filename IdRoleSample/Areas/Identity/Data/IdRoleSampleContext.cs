@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace IdRoleSample.Models
 {
-    public class IdRoleSampleContext : IdentityDbContext<IdentityUser>
+    public class IdRoleSampleContext : IdentityDbContext<IdentityUser, IdentityRole, string>
     {
         public IdRoleSampleContext(DbContextOptions<IdRoleSampleContext> options)
             : base(options)
