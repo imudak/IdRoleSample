@@ -1,0 +1,7 @@
+bin
+obj
+.vs
+UpgradeLog.htm
+Thumb.db
+__pycache__
+msbuild.log
