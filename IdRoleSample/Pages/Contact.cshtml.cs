@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace IdRoleSample.Pages
 {
-    [Authorize]
+    [Authorize(Policy = "RequireAdministratorRole")]
     public class ContactModel : PageModel
     {
         public string Message { get; set; }

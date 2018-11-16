@@ -24,6 +24,11 @@ namespace IdRoleSample.Areas.Identity
                 services.AddIdentity<IdentityUser, IdentityRole>()
                     .AddEntityFrameworkStores<IdRoleSampleContext>()
                     .AddDefaultUI();
+
+                services.AddAuthorization(options =>
+                {
+                    options.AddPolicy("RequireAdministratorRole", policy => policy.RequireRole("Administrator"));
+                });
             });
         }
     }
