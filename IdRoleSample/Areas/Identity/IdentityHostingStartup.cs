@@ -14,10 +14,12 @@ namespace IdRoleSample.Areas.Identity
     {
         public void Configure(IWebHostBuilder builder)
         {
-            builder.ConfigureServices((context, services) => {
+            builder.ConfigureServices((context, services) =>
+            {
                 services.AddDbContext<IdRoleSampleContext>(options =>
-                    options.UseSqlServer(
-                        context.Configuration.GetConnectionString("IdRoleSampleContextConnection")));
+                    options.UseInMemoryDatabase("IdRoleSampleContext"));
+                //options.UseSqlServer(
+                //    context.Configuration.GetConnectionString("IdRoleSampleContextConnection")));
 
                 services.AddDefaultIdentity<IdentityUser>()
                     .AddEntityFrameworkStores<IdRoleSampleContext>();
